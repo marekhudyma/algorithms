@@ -13,6 +13,9 @@ package mh.algorithms;
 public class BubbleSort implements Sortable {
 
     public void sort(final Comparable[] array) {
+        if(array == null) {
+            throw new NullPointerException("array cannot be null");
+        }
         boolean shouldIterate = true;
         while (shouldIterate){
             shouldIterate = false;

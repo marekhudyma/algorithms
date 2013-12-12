@@ -14,6 +14,11 @@ public abstract class AbstractSortTest {
     protected Sortable sortable;
 
     @Test
+    public void zeroTest() {
+        test(0);
+    }
+
+    @Test
     public void smallTest() {
        test(10);
     }
@@ -26,6 +31,11 @@ public abstract class AbstractSortTest {
     @Test
     public void bigTest() {
         test(10000);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void nullTest() {
+        sortable.sort(null);
     }
 
     private void test(int arraySize) {
