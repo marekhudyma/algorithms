@@ -6,5 +6,4 @@ public class BubbleSortTest extends AbstractSortTest {
         sortable = new BubbleSort();
     }
 
-
 }
