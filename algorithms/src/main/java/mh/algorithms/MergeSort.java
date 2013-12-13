@@ -25,34 +25,39 @@ public class MergeSort implements Sortable {
         }
     }
 
-    private void merge(Comparable[] array, Comparable[] arrayCopy, int low, int middle, int high) {
+    private void merge(final Comparable[] array, final Comparable[] arrayCopy, final int low, final int middle, final int high) {
+        int leftIndex = low;
+        int rightIndex = middle + 1;
 
-//        // Copy both parts into the helper array
-//        for (int i = low; i <= high; i++) {
-//            helper[i] = numbers[i];
-//        }
-//
-//        int i = low;
-//        int j = middle + 1;
-//        int k = low;
-//        // Copy the smallest values from either the left or the right side back
-//        // to the original array
-//        while (i <= middle && j <= high) {
-//            if (helper[i] <= helper[j]) {
-//                numbers[k] = helper[i];
-//                i++;
-//            } else {
-//                numbers[k] = helper[j];
-//                j++;
-//            }
-//            k++;
-//        }
-//        // Copy the rest of the left side of the array into the target array
-//        while (i <= middle) {
-//            numbers[k] = helper[i];
-//            k++;
-//            i++;
-//        }
+        int i=0;
+        while (leftIndex <= middle && rightIndex <= high) {
+            if (array[leftIndex].compareTo(array[rightIndex]) < 0) {
+                arrayCopy[i] = array[leftIndex];
+                leftIndex++;
+            } else {
+                arrayCopy[i] = array[rightIndex];
+                rightIndex++;
+            }
+            i++;
+        }
+        // Copy the rest of the left side of the array into the target array
+        while (leftIndex <= middle) {
+            arrayCopy[i] = array[leftIndex];
+            leftIndex++;
+            i++;
+        }
+
+        while (rightIndex <= high) {
+            arrayCopy[i] = array[rightIndex];
+            rightIndex++;
+            i++;
+        }
+
+        leftIndex = low;
+        for(int t=0; t<i; t++) {
+            array[leftIndex] = arrayCopy[t];
+            leftIndex++;
+        }
 
     }
 }
