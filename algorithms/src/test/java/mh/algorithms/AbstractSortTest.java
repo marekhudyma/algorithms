@@ -15,7 +15,16 @@ public abstract class AbstractSortTest {
 
     @Test
     public void test() {
-        final Integer[] array = {6,1,7,2,5};
+        final Integer[] array = {6,1,7,2,5,8,1,4};
+        final Integer[] array2 =  array.clone();
+        Arrays.sort(array);
+        sortable.sort(array2);
+        Assert.assertTrue(Arrays.equals(array2, array));
+    }
+
+    @Test
+    public void test2() {
+        final Integer[] array = {6,6,1,7,2,5,8,1,4,4};
         final Integer[] array2 =  array.clone();
         Arrays.sort(array);
         sortable.sort(array2);
