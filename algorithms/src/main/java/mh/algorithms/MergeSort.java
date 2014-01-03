@@ -2,29 +2,47 @@ package mh.algorithms;
 
 import java.util.Arrays;
 
+/**
+ * http://en.wikipedia.org/wiki/Merge_sort
+ *
+ * Mergesort is a divide and conquer algorithm
+ *
+ * complexity O(x^2)
+ * memory 2xO(1)
+ */
 public class MergeSort implements Sortable {
 
     @Override
     public void sort(Comparable[] array) {
+        //use copy of array
         Comparable[] ArrayCopy = new Comparable[array.length];
         mergesort(array, ArrayCopy, 0, array.length - 1);
     }
 
     private void mergesort(Comparable[] array, Comparable[] arrayCopy, int low, int high) {
-
-        // check if low is smaller then high, if not then the array is sorted
+        //check if low is smaller then high, if not then the array is sorted
         if (low < high) {
-            // Get the index of the element which is in the middle
+            //get the index of the element which is in the middle
             int middle = low + (high - low) / 2;
-            // Sort the left side of the array
+            //sort the left side of the array
             mergesort(array, arrayCopy, low, middle);
-            // Sort the right side of the array
+            //sort the right side of the array
             mergesort(array, arrayCopy, middle + 1, high);
-            // Combine them both
+            //merge
             merge(array, arrayCopy, low, middle, high);
         }
     }
 
+    /**
+     * merge two parts of "devided" array
+     * one: from low (included) to middle (included)
+     * second: from middle+1 to hight (included)
+     * @param array
+     * @param arrayCopy
+     * @param low index of left border (included)
+     * @param middle index of the border (where array is "devided"
+     * @param high index of right border (included)
+     */
     private void merge(final Comparable[] array, final Comparable[] arrayCopy, final int low, final int middle, final int high) {
         int leftIndex = low;
         int rightIndex = middle + 1;
@@ -40,7 +58,7 @@ public class MergeSort implements Sortable {
             }
             i++;
         }
-        // Copy the rest of the left side of the array into the target array
+        //copy the rest of the left side of the array into the target array
         while (leftIndex <= middle) {
             arrayCopy[i] = array[leftIndex];
             leftIndex++;
