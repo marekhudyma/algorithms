@@ -7,7 +7,7 @@ import java.util.Arrays;
  *
  * Mergesort is a divide and conquer algorithm
  *
- * complexity O(n^2)
+ * complexity O(n * log n)
  * memory 2xO(1)
  */
 public class MergeSort implements Sortable {
