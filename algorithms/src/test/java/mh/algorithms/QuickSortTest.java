@@ -9,16 +9,12 @@ public class QuickSortTest extends AbstractSortTest {
         sortable = new QuickSort();
     }
 
-
-
     @Test
     public void test1() {
         final Integer[] array = {6, 1, 7, 2, 5, 8, 1, 4};
         int index = (new QuickSort()).partition(array, 0,7);
-
         Assert.assertEquals(5, index);
         checkResult(array, 6, 5);
-
     }
 
     @Test
