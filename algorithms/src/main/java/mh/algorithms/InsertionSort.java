@@ -5,7 +5,7 @@ package mh.algorithms;
  *
  * a simple sorting algorithm that builds the final sorted array (or list) one item at a time
  *
- * complexity O(x^2)
+ * complexity O(n^2)
  * memory O(1)
  *
  * iterating from right side to left and insert element if order is wrong

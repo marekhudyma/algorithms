@@ -7,7 +7,7 @@ package mh.algorithms;
  * comparing each pair of adjacent items and swapping them if they are in the wrong order.
  * The pass through the list is repeated until no swaps are needed, which indicates that the list is sorted
  *
- * complexity O(x^2)
+ * complexity O(n^2)
  * memory O(1)
  */
 public class BubbleSort implements Sortable {
