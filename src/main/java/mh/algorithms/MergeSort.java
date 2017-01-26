@@ -1,6 +1,6 @@
 package mh.algorithms;
 
-import java.util.Arrays;
+import java.util.StringJoiner;
 
 /**
  * http://en.wikipedia.org/wiki/Merge_sort
@@ -8,7 +8,16 @@ import java.util.Arrays;
  * Mergesort is a divide and conquer algorithm
  *
  * complexity O(n * log n)
- * memory 2xO(1)
+ * memory 2xO(1) - this is because you can copy small subarrays or use one big copy
+ *
+ *
+ *          [5,2,4,6,1,3]
+ *     [5,2,4]        [6,1,3]
+ *  [5,2]   [4]    [6,1]   [3]
+ * [5] [2]  [4]   [6] [1]  [3]
+ *  [2,5]   [4]     [6,1]  [3]
+ *    [2,4,5]         [1,3,6]
+ *          [1,2,3,4,5,6]
  */
 public class MergeSort implements Sortable {
 
@@ -19,7 +28,20 @@ public class MergeSort implements Sortable {
         mergesort(array, ArrayCopy, 0, array.length - 1);
     }
 
+    private void print(Comparable[] array, int low, int high) {
+        if(array.length < MAX_ELEMENTS_TO_PRINT) {
+            StringJoiner sj = new StringJoiner(",", "[", "]");
+            for(int i=low; i<=high; i++) {
+                Comparable comparable = array[i];
+                sj.add(comparable.toString());
+            }
+            System.out.println(sj.toString());
+        }
+    }
+
     private void mergesort(Comparable[] array, Comparable[] arrayCopy, int low, int high) {
+
+        print(array, low, high);
         //check if low is smaller then high, if not then the array is sorted
         if (low < high) {
             //get the index of the element which is in the middle
@@ -43,7 +65,7 @@ public class MergeSort implements Sortable {
      * @param middle index of the border (where array is "devided"
      * @param high index of right border (included)
      */
-    private void merge(final Comparable[] array, final Comparable[] arrayCopy, final int low, final int middle, final int high) {
+    private void merge(Comparable[] array, Comparable[] arrayCopy, int low, int middle, int high) {
         int leftIndex = low;
         int rightIndex = middle + 1;
 
